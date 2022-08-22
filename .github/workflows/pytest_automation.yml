@@ -32,11 +32,12 @@ jobs:
         with:
           python-version: 3.10.2
 
-      - name: Poetry Install 
+      - name: Poetry Install & update
         run: |
-          sudo apt-get install poetry python3-pip
+          sudo apt-get install python3-pip
           python3 -m pip install --upgrade pip
-          poetry init --no-root   
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+          poetry update
 
       # - name: Create test environment
       #   uses: ./.github/actions/run-test-automation/
