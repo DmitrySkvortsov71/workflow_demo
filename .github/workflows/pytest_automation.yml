@@ -32,10 +32,16 @@ jobs:
         with:
           python-version: 3.10.2
 
-      - name: Create test environment
-        uses: ./.github/actions/run-test-automation/
-        with:
-          app: ui
-          path-to-test-suite: ui/${{ matrix.page_object }}/
-          tested-url: "http://www.google.com"
-          test-area-name: "UI-${{ matrix.page_object }}-Automation"
+      - name: Poetry Install 
+        run: |
+          sudo apt-get install poetry python3-pip
+          python3 -m pip install --upgrade pip
+          poetry init --no-root   
+
+      # - name: Create test environment
+      #   uses: ./.github/actions/run-test-automation/
+      #   with:
+      #     app: ui
+      #     path-to-test-suite: ui/${{ matrix.page_object }}/
+      #     tested-url: "http://www.google.com"
+      #     test-area-name: "UI-${{ matrix.page_object }}-Automation"
