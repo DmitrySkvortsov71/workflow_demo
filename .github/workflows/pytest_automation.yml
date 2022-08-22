@@ -1,0 +1,41 @@
+name: "Automation"
+
+on: push
+
+jobs:
+  run-ui-suite:
+
+    runs-on: ubuntu-22.04
+
+    strategy:
+      # When set to true, GitHub cancels all in-progress jobs if any matrix job fails.
+      fail-fast: false
+      # One eCIT+Runner for each page_object
+      matrix:
+        page_object:
+          #- catalog # not working remotely until we get RH+ENV setup via API
+          - tests
+
+    steps:
+      - run:
+          echo "Job automatically triggered by event ${{ github.event_name }}"
+          echo "Job run on a ${{ runner.os }} server, hosted by GitHub"
+          echo "On branch ${{ github.ref }} of repository ${{ github.repository }}."
+
+      - name: Check out repository code so it can be run by GitHub
+        uses: actions/checkout@v2
+
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.2
+
+      - name: Create test environment
+        uses: ./.github/actions/run-test-automation/
+        with:
+          app: ui
+          path-to-test-suite: ui/${{ matrix.page_object }}/
+          tested-url: "http://www.google.com"
+          test-area-name: "UI-${{ matrix.page_object }}-Automation"
