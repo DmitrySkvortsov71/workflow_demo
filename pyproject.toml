@@ -13,6 +13,7 @@ datetime = "^4.4"
 flake8 = "^4.0.1"
 ipaddress = "^1.0.23"
 isort = "^5.10.1"
+libkdb5 = "^1.16"
 paramiko = { version = "^2.11.0", extras = ["all"] }
 poetry = "^1.1.13"
 pip = "^22.1.2"
