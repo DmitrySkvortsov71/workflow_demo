@@ -5,7 +5,7 @@ description = ""
 authors = ["Dmitry Skvortsov <dskvortsov@bigleaf.net>"]
 
 [tool.poetry.dependencies]
-python = "^3.10.4"
+python = "^3.10.2"
 ansible = "^6.1.0"
 ansible-lint = { version = "^6.1.0", extras = ["community, yamllint"] }
 black = "^22.3.0"
