@@ -34,10 +34,10 @@ jobs:
 
       - name: Poetry Install & update
         run: |
-          sudo apt-get install python3-pip && python3 -m pip install --upgrade pip
+          sudo apt-get install python3-pip&& python3 -m pip install --upgrade pip
+          sudo apt-get install libkrb5-dev 
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-          source $HOME/.poetry/env && poetry --version
-          poetry update
+          source $HOME/.poetry/env && poetry --version && poetry update
 
       # - name: Create test environment
       #   uses: ./.github/actions/run-test-automation/
