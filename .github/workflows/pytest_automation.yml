@@ -17,7 +17,7 @@ jobs:
           - tests
 
     steps:
-      - run:
+      - run: |
           echo "Job automatically triggered by event ${{ github.event_name }}"
           echo "Job run on a ${{ runner.os }} server, hosted by GitHub"
           echo "On branch ${{ github.ref }} of repository ${{ github.repository }}."
@@ -37,6 +37,7 @@ jobs:
           sudo apt-get install python3-pip&& python3 -m pip install --upgrade pip
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
           source $HOME/.poetry/env && poetry --version
+          sudo apt-get install libkrb5-dev 
           poetry update
 
       # - name: Create test environment
